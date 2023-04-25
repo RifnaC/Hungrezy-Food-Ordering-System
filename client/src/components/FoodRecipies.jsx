@@ -41,7 +41,7 @@ function FoodRecipies() {
   };
 
   return (
-    <div className="h-auto bg-gradient-to-r from-rose-100 to-teal-100">
+    <div className="h-auto bg-gradient-to-r from-rose-100 to-teal-100" >
       <div
         id="Recipies"
         className="bg-cover bg-right bg-no-repeat py-1 text-black font-bold"
@@ -84,7 +84,7 @@ function FoodRecipies() {
         style={{ backgroundColor: "#878787" }}
         className="w-full h-0.5"
       ></div>
-      <div className="flex flex-wrap h-10 items-center justify-around">
+      {/* <div className="flex flex-wrap h-10 items-center justify-around">
         <span
           style={{ backgroundColor: "#D9D9D9" }}
           className="px-2 py-1 mr-2 font-bold text-sm rounded-full"
@@ -109,7 +109,7 @@ function FoodRecipies() {
         >
           Ice creams
         </span>
-      </div>
+      </div> */}
       <div className="flex">
         <div className="w-1/3 p-4">
           <img
@@ -128,37 +128,29 @@ function FoodRecipies() {
               <span>
                 Price: <strong> ₹ {singlePro?.price}</strong>
               </span>
-              <span>
-                Review:{" "}
-                <strong>
-                  {" "}
-                  {singlePro?.review}{" "}
-                  <span style={{ color: "red", fontSize: "20px" }}>*</span>
-                </strong>
-              </span>
+
             </div>
-            <h1 className="font-bold">Description:</h1>
+            <h1 className="font-bold">Instruction:</h1>
             <div className="flex h-500 justify-start p-2">
-              <ul className="list-disc flex p-4 m-2 flex-wrap justify-between">
-                <li className="py-2">{singlePro?.desc}</li>
-              </ul>
+              {singlePro?.desc}
+            
             </div>
-            <h1 className="font-bold">Incgrediance</h1>
-            <div className="flex-1">
+              <h1 className="font-bold">Ingredients:</h1>
+              <span>{singlePro?.review}</span>
+              {/* <div className="flex-1">
               <ul className="list-disc flex p-4 m-2 flex-wrap justify-between">
-                <li className="py-2">List item 3</li>
-                <li className="py-2">
-                  List item gfdsgdsgsdgsgdfgdsfdsggsdsgsdgdsgsdgsdggdsg4
-                </li>
-                <li className="py-2">List item 4</li>
+                <li className="py-2">2 cup rice flour </li>
+                <li className="py-2">1 cup cooked rice </li>
+                <li className="py-2">½ cup grated coconut 1</li>
+                
               </ul>
-            </div>
+            </div> */}
             <div className="flex-1">
               <div className="flex items-center gap-4 mb-5">
                 <button
                   disabled={quantity === 1}
                   onClick={() => changeQuantity("dec")}
-                  className="px-4 py-2 border cursor-pointer text-lg hover:bg-gray-300 focus:outline-none disabled:bg-blue-500 disabled:text-gray-300 disabled:cursor-not-allowed"
+                  className="px-4 py-2 border cursor-pointer text-lg hover:bg-gray-700 focus:outline-none disabled:bg-gray-300 disabled:text-gray-300 disabled:cursor-not-allowed"
                 >
                   -
                 </button>
@@ -167,13 +159,13 @@ function FoodRecipies() {
                 </span>
                 <button
                   onClick={() => changeQuantity("inc")}
-                  className="px-4 py-2 border cursor-pointer text-lg hover:bg-gray-300 focus:outline-none"
+                  className="px-4 py-2 border cursor-pointer text-lg hover:bg-gray-700 focus:outline-none"
                 >
                   +
                 </button>
                 <button
                   onClick={addToCart}
-                  className="outline-none border-1 border-transparent py-2 px-4 ml-8 bg-blue-500 text-white rounded-2xl text-lg flex items-center gap-2 cursor-pointer hover:border-blue-500 hover:text-blue-500 hover:bg-white"
+                  className="outline-none border-1 border-transparent py-2 px-4 ml-8 bg-gray-300 text-black rounded-2xl text-lg flex items-center gap-2 cursor-pointer hover:border-gray-700 hover:bg-gray"
                 >
                   Add To Cart
                 </button>

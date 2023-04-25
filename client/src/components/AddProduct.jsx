@@ -24,6 +24,8 @@ function AddProduct() {
     try {
       const formData = new FormData();
       let filename = null;
+      console.log("hdhd")
+
       if (image) {
         filename = Date.now() + image.name;
         formData.append("filename", filename);
@@ -36,14 +38,17 @@ function AddProduct() {
           }
         );
       }
+      console.log("ddddddddddd")
 
       const res = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/product/`,
-        { title, desc, category, img: filename, price, review },
+        `${process.env.REACT_APP_BACKEND_URL}/product`,
+      { title, desc, category, img: filename, price, review},
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      console.log("dddshsjjs")
+
       const data = res.data;
       navigate(`/food/${data._id}`);
     } catch (error) {
@@ -66,10 +71,19 @@ function AddProduct() {
             />
           </div>
           <div className="flex items-center justify-end mb-4">
-            <label className="w-1/3">Description: </label>
+            <label className="w-1/3">Ingredients: </label>
+            <textarea
+              type="text"
+              placeholder="Ingrendients..."
+              className="w-3/4 border rounded-md p-2"
+              onChange={(e) => setReview(e.target.value)}
+            />
+          </div>
+          <div className="flex items-center justify-end mb-4">
+            <label className="w-1/3">Instruction: </label>
             <input
               type="text"
-              placeholder="Description..."
+              placeholder="Instruction..."
               className="w-3/4 border rounded-md p-2"
               onChange={(e) => setDesc(e.target.value)}
             />
@@ -120,7 +134,8 @@ function AddProduct() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-end mb-4">
+        
+          {/* <div className="flex items-center justify-end mb-4">
             <label className="w-1/3">Review: </label>
             <input
               type="number"
@@ -131,11 +146,11 @@ function AddProduct() {
               className="w-3/4 border rounded-md p-2"
               onChange={(e) => setReview(e.target.value)}
             />
-          </div>
+          </div> */}
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="w-1/2 bg-blue-600 text-white py-2 px-4 rounded-md border border-transparent cursor-pointer transition-all duration-150 hover:bg-white hover:text-blue-600 hover:border-blue-600 mt-2"
+              className="w-1/2 bg-gray-400 text-black py-2 px-4 rounded-md border border-transparent cursor-pointer transition-all duration-150 hover:bg-gray hover:border-gray-600 mt-2"
             >
               Submit
             </button>

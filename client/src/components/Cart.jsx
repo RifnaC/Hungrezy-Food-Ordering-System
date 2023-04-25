@@ -71,7 +71,7 @@ function Cart() {
                 className={`mt-2 px-4 py-2 text-white rounded-md cursor-pointer ₹{
                 products.length === 0
                   ? "bg-gray-500"
-                  : " bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 border-2 border-transparent"
+                  : " bg-gray-300 hover:bg-gray-500 hover:text-black hover:border-gray-700 border-2 border-transparent"
               } transition-all duration-300 ease-in-out`}
               >
                 Order now

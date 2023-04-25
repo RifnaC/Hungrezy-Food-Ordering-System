@@ -1,6 +1,7 @@
 const productController = require("express").Router();
 const Product = require("../model/Product");
 const { verifyToken, verifyTokenAdmin } = require("../middlewares/verifyToken");
+const Emails = require("../model/Emails");
 
 //get all product
 productController.get("/", async (req, res) => {
@@ -39,11 +40,44 @@ productController.get("/find/:id", verifyToken, async (req, res) => {
 //create product
 productController.post("/", verifyTokenAdmin, async (req, res) => {
   try {
+   
     const newProduct = await Product.create({ ...req.body });
     return res.status(201).json(newProduct);
+    
+
   } catch (error) {
     console.error(error);
   }
 });
+//delete product
+productController.delete("/:id", verifyTokenAdmin, async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+    const product = await Product.findById(productId);
+    if (!product) return res.status(404).send("Product not found.");
+    const deletedProduct = await Product.deleteOne({
+      _id: productId,
+    });
+    
+    return res.status(201).json(deletedProduct);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+//create emails
+productController.post("/email", async (req, res) => {
+  try {
+   
+    const newEmail = await Emails.create({ ...req.body });
+    return res.status(201).json(newEmail);
+    
+
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 
 module.exports = productController;

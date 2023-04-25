@@ -16,6 +16,9 @@ app.use("/auth", authController);
 app.use("/product", productController);
 app.use("/upload", uploadController);
 
+
+
+
 //DB setup
 mongoose.set("strictQuery", false);
 mongoose

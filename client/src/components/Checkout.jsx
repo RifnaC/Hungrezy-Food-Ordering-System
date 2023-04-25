@@ -26,7 +26,7 @@ function Checkout() {
         </span>
         <span
           onClick={handleClear}
-          className=" rounded-xl cursor-pointer p-2 font-bold bg-blue-500 text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 border-2 border-transparent"
+          className=" rounded-xl cursor-pointer p-2 font-bold bg-gray-300 text-black hover:bg-gray-500 hover:border-gray-700 border-2 border-transparent"
         >
           Go to Home
         </span>
